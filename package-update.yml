@@ -22,11 +22,10 @@
   gather_facts: no
 
   tasks:
-    - name: expire yum caches
-      command: yum clean expire-cache
-
-    - name: apply package updates
-      command: yum -y update
+    - name: upgrade all packages
+      yum:
+        name: '*'
+        state: latest
 
 - name: update rkhunter if installed
   hosts: all
